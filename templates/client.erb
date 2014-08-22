@@ -1,0 +1,46 @@
+<% if @hostname -%>
+client <%= @hostname -%> {
+<% if @ipv6addr -%>
+  ipv6addr = <%= @ipv6addr %>
+<% else -%>
+  ipaddr = <%= @ipaddr ? @ipaddr : @hostname %>
+<% end -%>
+<% if @proto -%>
+  proto = <%= @proto %> 
+<% end -%>
+<% if @netmask -%>
+  netmask = <%= @netmask %>
+<% end -%>
+<% if @secret -%>
+  secret = <%= @secret %>
+<% end -%>
+<% if @require_message_authenticator -%>
+  require_message_authenticator = <%= @require_message_authenticator %>
+<% end -%>
+<% if @shortname -%>
+  shortname = <%= @shortname %>
+<% end -%>
+<% if @nas_type -%>
+  nas_type =<%= @nas_type %>
+<% end -%>
+<% if @login -%>
+  login = <%= @login %>
+<% end -%>
+<% if @password -%>
+  password = <%= @password %>
+<% end -%>
+<% if @virtual_server -%>
+  virtual_server = <%= @virtual_server %>
+<% end -%>
+<% if @coa_server -%>
+  coa_server = <%= @coa_server %>
+<% end -%>
+<% if @limits -%>
+  limit {
+<% Hash(@limits).each do |limit,value| -%>
+    <%= limit -%> = <%= value %>
+<% end -%>
+  }
+<% end -%>
+}
+<% end -%>
