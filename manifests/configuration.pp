@@ -6,7 +6,7 @@ class freeradius::configuration (
   concat { 'radius_clients_conf':
     ensure         => present,
     path           => "${config_basepath}/clients.conf",
-    mode           => '0650',
+    mode           => '0640',
     owner          => $config_owner,
     group          => $config_group,
     warn           => true,
