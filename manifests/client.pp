@@ -1,5 +1,6 @@
 define freeradius::client (
   $secret,
+  $ensure = present,
   $hostname = $title,
   $nas_type = 'other',
   $require_message_authenticator = 'no',
@@ -15,6 +16,7 @@ define freeradius::client (
   $limits = undef,
 ) {
   concat::fragment { "radius_client-${title}":
+    ensure  => $ensure,
     target  => 'radius_clients_conf',
     content => template("${module_name}/client.erb"),
   }
