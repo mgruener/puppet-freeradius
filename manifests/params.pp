@@ -10,6 +10,8 @@ class freeradius::params {
         $service = 'radiusd.service'
         $service_provider = 'systemd'
         $config_basepath = '/etc/raddb'
+        $config_owner = 'root'
+        $config_group = 'radiusd'
       }
     /^RedHat|^CentOS/: {
         case $::operatingsystemmajrelease {
@@ -18,12 +20,16 @@ class freeradius::params {
               $service = 'radiusd'
               $service_provider = 'redhat'
               $config_basepath = '/etc/raddb'
+              $config_owner = 'root'
+              $config_group = 'radiusd'
             }
           '7': {
               $package = 'freeradius'
               $service = 'radiusd.service'
               $service_provider = 'systemd'
               $config_basepath = '/etc/raddb'
+              $config_owner = 'root'
+              $config_group = 'radiusd'
             }
           default: { fail("${module_name} is not supported on ${::operatingsystem} ${::opertingsystemmajrelease}") }
         }
